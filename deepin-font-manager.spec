@@ -6,7 +6,7 @@
 %endif
 Name:           deepin-font-manager
 Version:        5.6.1
-Release:        1
+Release:        2
 Summary:        Deepin Font Manager is used to install and uninstall font file for users with bulk install function.
 License:        GPLv3+
 URL:            https://uos-packages.deepin.com/uos/pool/main/d/deepin-font-manager/
@@ -14,6 +14,7 @@ Source0:        %{name}-%{version}.orig.tar.xz
 
 
 BuildRequires:  qt5-qtbase-devel libqtxdg-devel libqtxdg
+BuildRequires:  dtkcore-devel
 BuildRequires:  dtkwidget-devel
 BuildRequires:  freetype-devel
 BuildRequires:  freetype
@@ -57,5 +58,7 @@ popd
 
 
 %changelog
+* Wed Sep 9 2020 chenbo pan <panchenbo@uniontech.com> - 5.6.1-2 
+- fix compile error
 * Thu Jul 30 2020 openEuler Buildteam <buildteam@openeuler.org> - 5.6.1-1
 - Package init
