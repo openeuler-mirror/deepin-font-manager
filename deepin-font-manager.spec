@@ -2,11 +2,12 @@
 
 Name:           deepin-font-manager
 Version:        5.6.23
-Release:        1
+Release:        2
 Summary:        Deepin Font Manager is used to install and uninstall font file for users with bulk install function
 License:        GPLv3+
 URL:            https://github.com/linuxdeepin/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         fix-qtbase-QPainterPath.patch
 
 BuildRequires: gcc-c++
 BuildRequires: qt5-devel
@@ -17,6 +18,7 @@ BuildRequires: pkgconfig(dtkgui)
 BuildRequires: pkgconfig(freetype2)
 BuildRequires: pkgconfig(fontconfig)
 BuildRequires: pkgconfig(dde-file-manager)
+BuildRequires: qt5-qtbase-private-devel
 
 %description
 %{summary}.
@@ -33,7 +35,7 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 # help find (and prefer) qt5 utilities, e.g. qmake, lrelease
@@ -66,6 +68,9 @@ popd
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
+* Fri Feb 11 2022 liweigang <liweiganga@uniontech.com> - 5.6.23-2
+- fix build error
+
 * Mon Jul 12 2021 weidong <weidong@uniontech.com> - 5.6.23-1 
 - Update 5.6.23
 
