@@ -1,0 +1,55 @@
+diff --color -Naur a/deepin-font-manager/interfaces/dfontpreviewer.cpp b/deepin-font-manager/interfaces/dfontpreviewer.cpp
+--- a/deepin-font-manager/interfaces/dfontpreviewer.cpp	2022-02-11 09:38:55.999617049 +0800
++++ b/deepin-font-manager/interfaces/dfontpreviewer.cpp	2022-02-11 09:39:41.675711054 +0800
+@@ -3,6 +3,7 @@
+ 
+ #include <QPainter>
+ #include <QPaintEvent>
++#include <QPainterPath>
+ #include <QRect>
+ 
+ #include <DPalette>
+diff --color -Naur a/deepin-font-manager/interfaces/dfontpreviewitemdelegate.cpp b/deepin-font-manager/interfaces/dfontpreviewitemdelegate.cpp
+--- a/deepin-font-manager/interfaces/dfontpreviewitemdelegate.cpp	2022-02-11 09:38:55.999617049 +0800
++++ b/deepin-font-manager/interfaces/dfontpreviewitemdelegate.cpp	2022-02-11 10:05:20.575062102 +0800
+@@ -4,6 +4,7 @@
+ #include "utils.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ 
+ #include <DApplication>
+ #include <DApplicationHelper>
+diff --color -Naur a/deepin-font-manager/views/dfinstallerrorlistview.cpp b/deepin-font-manager/views/dfinstallerrorlistview.cpp
+--- a/deepin-font-manager/views/dfinstallerrorlistview.cpp	2022-02-11 09:38:55.999617049 +0800
++++ b/deepin-font-manager/views/dfinstallerrorlistview.cpp	2022-02-11 10:07:36.171363953 +0800
+@@ -3,6 +3,7 @@
+ #include "utils.h"
+ 
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ #include <QStandardItemModel>
+ 
+diff --color -Naur a/deepin-font-manager/views/dfontspinner.cpp b/deepin-font-manager/views/dfontspinner.cpp
+--- a/deepin-font-manager/views/dfontspinner.cpp	2022-02-11 09:38:56.003617058 +0800
++++ b/deepin-font-manager/views/dfontspinner.cpp	2022-02-11 10:04:15.498917746 +0800
+@@ -2,6 +2,7 @@
+ 
+ #include <QTimer>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QtMath>
+ #include <QEvent>
+ #include <QDebug>
+diff --color -Naur a/deepin-font-manager/views/dsplitlistwidget.cpp b/deepin-font-manager/views/dsplitlistwidget.cpp
+--- a/deepin-font-manager/views/dsplitlistwidget.cpp	2022-02-11 09:38:56.003617058 +0800
++++ b/deepin-font-manager/views/dsplitlistwidget.cpp	2022-02-11 10:06:56.747276058 +0800
+@@ -2,6 +2,7 @@
+ #include "globaldef.h"
+ #include "utils.h"
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QMouseEvent>
+ 
+ #include <DStyleHelper>
