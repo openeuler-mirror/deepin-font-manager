@@ -1,0 +1,65 @@
+diff -u -r deepin-font-manager-5.8.7/tests/src/deepin-font-manager-test/views/ut_dfontmgrmainwindow.cpp deepin-font-manager-5.8.7/tests/src/deepin-font-manager-test/views/ut_dfontmgrmainwindow.cpp
+--- deepin-font-manager-5.8.7/tests/src/deepin-font-manager-test/views/ut_dfontmgrmainwindow.cpp	2021-04-28 15:17:34.000000000 +0800
++++ deepin-font-manager-5.8.7/tests/src/deepin-font-manager-test/views/ut_dfontmgrmainwindow.cpp	2023-06-20 15:29:54.000000000 +0800
+@@ -64,8 +64,7 @@
+ 
+ namespace {
+ 
+-typedef int (*fptr)(QDialog *);
+-auto QDialog_exec = (fptr)(&QDialog::exec);
++std::function<int(QDialog*)> QDialog_exec = [](QDialog* dlg){ return dlg->exec(); };
+ 
+ class TestDFontMgrMainWindow : public testing::Test
+ {
+diff -u -r deepin-font-manager-5.8.7/tests/third-party/stub/stub.h deepin-font-manager-5.8.7/tests/third-party/stub/stub.h
+--- deepin-font-manager-5.8.7/tests/third-party/stub/stub.h	2021-04-28 15:17:34.000000000 +0800
++++ deepin-font-manager-5.8.7/tests/third-party/stub/stub.h	2023-06-20 15:30:17.000000000 +0800
+@@ -144,8 +144,8 @@
+     {
+         char * fn;
+         char * fn_stub;
+-        fn = addrof(addr);
+-        fn_stub = addrof(addr_stub);
++        fn = addrof(&addr);
++        fn_stub = addrof(&addr_stub);
+         struct func_stub *pstub;
+         pstub = new func_stub;
+         //start
+@@ -198,7 +198,7 @@
+     void reset(T addr)
+     {
+         char * fn;
+-        fn = addrof(addr);
++        fn = addrof(&addr);
+         
+         std::map<char*,func_stub*>::iterator iter = m_result.find(fn);
+         
+@@ -252,17 +252,17 @@
+ #endif   
+     }
+ 
+-    template<typename T>
+-    char* addrof(T addr)
+-    {
+-        union 
+-        {
+-          T _s;
+-          char* _d;
+-        }ut;
+-        ut._s = addr;
+-        return ut._d;
+-    }
++		template<typename T>
++		char* addrof(T* addr)
++		{
++				union 
++				{
++					T* _s;
++					char* _d;
++				}ut;
++				ut._s = addr;
++				return ut._d;
++		}
+ 
+     bool distanceof(char* addr, char* addr_stub)
+     {
